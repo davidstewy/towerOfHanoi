@@ -29,7 +29,6 @@ h1 {
     width: 10em;
     justify-content: end;
     padding-left: 0;
-    
 }
 
 #start {
@@ -43,38 +42,35 @@ h1 {
 }
 
 li {
-    display:flex;
+    display: flex;
     justify-content: center;
-    
 }
 
 .disc {
     border: 1px solid black;
-    display:flex;
+    display: flex;
     border-radius: .8em;
-    
 }
 
-#smallest {
-width: 3em;
-height: 2em;
-background: #1c676b;
+[data-size="1"] {
+    width: 3em;
+    height: 2em;
+    background: #1c676b;
 }
 
-#small {
+[data-size="2"] {
     width: 5em;
     height: 2em;
     background: #1cd86d;
-    
 }
 
-#large {
+[data-size="3"] {
     width: 7em;
     height: 2em;
     background: #f9ff51;
 }
 
-#largest {
+[data-size="4"] {
     width: 9em;
     height: 2em;
     background: #ff9411;

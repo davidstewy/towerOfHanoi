@@ -1,20 +1,47 @@
 let towers = document.getElementsByClassName('tower');
+let selectedTopDisc;
 
-for (let tower of towers) {
-    tower.addEventListener('click', firstClick);
+function changeTowerClick(addOrRemove, eventListener) {
+    for (let tower of towers) {
+        if (addOrRemove === "add") {
+            tower.addEventListener('click', eventListener);
+        } else {
+            tower.removeEventListener('click', eventListener);
+        }
+    }
 }
 
-function firstClick(event) {
-let currentClick = event.currentTarget;
-console.log('inside');
-let disc = document.getElementsByClassName('disc');
-    if(disc.childElementCount !== 0){
-        let x = disc.lastElementChild;
-        let selection = document.getElementsByClassName('tower');
-        tower.appendChild(x);
+function pickupClick(event) {
+    console.log("pickup")
+
+    let currentTower = event.currentTarget;
+
+    if (currentTower.childElementCount !== 0) {
+        selectedTopDisc = currentTower.lastElementChild;
+        
+        changeTowerClick("remove", pickupClick);
+        changeTowerClick("add", dropClick);
+    }
+}
+
+function dropClick(event) {
+    console.log("drop")
+
+    let currentTower = event.currentTarget;
+    const targetTopDisc = currentTower.lastElementChild;
+
+    if (!targetTopDisc || selectedTopDisc.dataset.size < targetTopDisc.dataset.size) {
+        currentTower.appendChild(selectedTopDisc);
+    
+        changeTowerClick("remove", dropClick);
+        changeTowerClick("add", pickupClick);
+
+        
+        // trigger win check
+    } else {
+        console.log("CAN'T DO (BUT MATT COULD)");
     }
 
-    
-    
-
 }
+
+changeTowerClick("add", pickupClick);
