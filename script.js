@@ -37,11 +37,17 @@ function dropClick(event) {
         changeTowerClick("add", pickupClick);
 
         
+        let win = document.getElementById("end");
+        if(end.childElementCount === 4){
         // trigger win check
+        setTimeout(function() { alert("You Win!"); }, 500);
+            
+        }
     } else {
         console.log("CAN'T DO (BUT MATT COULD)");
     }
 
 }
+
 
 changeTowerClick("add", pickupClick);
